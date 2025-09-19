@@ -1,0 +1,25 @@
+# docker-compose.yaml
+services:
+  web:
+    build:
+      context: .
+    image: lab1-react:compose
+    container_name: lab1-web
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  # --- Optional: development service (uncomment if you want hot reload) ---
+  # dev:
+  #   image: node:18-alpine
+  #   working_dir: /app
+  #   volumes:
+  #     - ./:/app
+  #   command: sh -c "npm ci && npm run dev -- --host"
+  #   ports:
+  #     - "5173:5173"   # Vite default; adjust for CRA dev server
+  #   environment:
+  #     - NODE_ENV=development
+  #   # Useful if you need extra packages for native deps
+  #   # extra_hosts:
+  #   #   - "host.docker.internal:host-gateway"
